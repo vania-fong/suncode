@@ -21,12 +21,12 @@ def add_cols(data_df, source_dict, key):
     for i in range(len(data_df['JobId'])):
         
         k = data_df[key][i]
-        print(k)
-        for c in source_dict[k].keys():
-            if c not in columns:
-                data_df[c] = 0
-                columns.append([c])
-            data_df[c][i] = source_dict[k][c]
+        print(str(k))
+        # for c in source_dict[k].keys():
+        #     if c not in columns:
+        #         data_df[c] = 0
+        #         columns.append([c])
+        #     data_df[c][i] = source_dict[k][c]
 
 data_installed = pd.read_csv('data/PV_installed_customer_details.csv', sep=',', encoding='ISO-8859-1')
 data_cancelled = pd.read_csv('data/PV_cancelled_customer_details.csv', sep=',', encoding='ISO-8859-1')
@@ -36,18 +36,18 @@ factors = [
     'EngineeringSoldkWSize',
     'EngineeringSoldAnnualkWh',
     'EnergyConsumption',
-    'Region',
-    'State',
-    'Zip',
-    'Latitude',
-    'Longitude',
-    'AHJ',
-    'RoofType',
+#    'Region',
+#    'State',
+#    'Zip',
+#    'Latitude',
+#    'Longitude',
+#    'AHJ',
+#    'RoofType',
     'RoofSqFoot',
     'NumMountingPlanes',
     'NumPanels',
-    'Utility',
-    'ProductTypeAlt',
+#    'Utility',
+#    'ProductTypeAlt',
     'PowerwallCount',
     'UtilityCostPerKWh',
     'OldBill',
@@ -57,14 +57,13 @@ factors = [
     'AverageShading',
     'Reroof',
     'MPU',
-    'NumStories',
+#    'NumStories',
 ]
 
 data_installed = data_installed[factors]
 data_cancelled = data_installed[factors]
 data_installed['Status'] = 1
 data_cancelled['Status'] = 0
-
 data_combined = data_installed.append(data_cancelled)
 
 # data_sunlight = pd.read_csv('data/Google Sunroof_Yearly_Sunlight_by_State.csv', sep=',', encoding='ISO-8859-1')
